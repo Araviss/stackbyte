@@ -3,6 +3,8 @@ import { validateContactForm } from "../../lib/validation";
 import { sendContactEmail, createResendSender } from "../../lib/email";
 import { ZodError } from "zod";
 
+export const prerender = false;
+
 // In-memory rate limiter: max 3 submissions per IP per hour.
 // Simple and dependency-free — sufficient for a low-traffic contact form.
 const RATE_LIMIT = 3;

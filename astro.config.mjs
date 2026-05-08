@@ -9,7 +9,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://stackbyte.co',
-  output: 'server',
+  output: 'static',
   adapter: vercel(),
   integrations: [react(), sitemap()],
 

@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/contact/ContactForm";
+import FAQAccordion from "../components/contact/FAQAccordion";
+import { FAQ_ITEMS } from "../content/contact";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="Contact Stackbyte | Software Consulting for SMBs"
+  description="Start a conversation with Stackbyte. Tell us what you are working on and we will get back to you within one business day."
+  schema={schema}
+>
+  <section class="px-6 py-16 md:py-24">
+    <div class="max-w-6xl mx-auto grid gap-14 lg:grid-cols-[1.18fr_0.82fr] lg:items-start">
+      <div class="order-2 lg:order-1">
+        <ContactForm client:load />
+      </div>
+
+      <aside class="order-1 grid content-start gap-8 lg:order-2 lg:sticky lg:top-8 lg:text-right">
+        <div class="border-b border-brand-black/10 pb-8 lg:border-b-0 lg:border-r lg:pb-0 lg:pr-8">
+          <p class="font-hand text-4xl text-brand-red">start with the weird part.</p>
+          <h1 class="ml-auto mt-6 max-w-xl text-[clamp(3.25rem,6vw,5.75rem)] font-black leading-[0.92] tracking-normal">
+            Tell us what needs fixing.
+          </h1>
+          <p class="ml-auto mt-7 max-w-lg text-xl leading-relaxed text-brand-black/65">
+            No pitch gauntlet. No commitment. Send the context, the mess, or the
+            suspicious spreadsheet. We will reply like actual people.
+          </p>
+        </div>
+
+        <div class="border-t border-brand-black/10 pt-6 lg:border-t-0 lg:pr-8">
+          <p class="font-hand text-3xl text-brand-black/55">then what?</p>
+          <ol class="mt-5 grid gap-4 text-brand-black/65">
+            {[
+              "We read the whole thing.",
+              "We reply with honest first thoughts.",
+              "If it fits, we scope the next step.",
+            ].map((step, i) => (
+              <li class="flex gap-4 leading-relaxed lg:flex-row-reverse">
+                <span class="font-hand text-2xl text-brand-red">0{i + 1}</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div class="border-t border-brand-black/10 pt-6 lg:pr-8">
+          <p class="font-hand text-3xl text-brand-black/55">prefer email?</p>
+          <a
+            href="mailto:hello@stackbyte.io"
+            class="mt-2 block text-2xl font-black hover:text-brand-red transition-colors duration-200 break-all"
+          >
+            hello@stackbyte.io
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-rule px-6 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <p class="font-hand text-3xl text-brand-black/55">fine print, but readable</p>
+        <h2 class="mt-3 text-display-sm">Questions.</h2>
+      </div>
+      <FAQAccordion items={FAQ_ITEMS} client:visible />
+    </div>
+  </section>
+</BaseLayout>

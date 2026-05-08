@@ -1,0 +1,29 @@
+---
+interface Props {
+  items: string[];
+  bgColor?: string;
+  textColor?: string;
+  separator?: string;
+}
+
+const {
+  items,
+  bgColor = "bg-brand-yellow",
+  textColor = "text-brand-black",
+  separator = "·",
+} = Astro.props;
+
+// Duplicate items so the marquee loops seamlessly
+const doubled = [...items, ...items];
+---
+
+<div class={`${bgColor} ${textColor} overflow-hidden py-4`} aria-hidden="true">
+  <div class="flex whitespace-nowrap marquee-track">
+    {doubled.map((item, i) => (
+      <span class="flex items-center gap-6 px-6 font-black uppercase tracking-widest text-sm">
+        {item}
+        <span class="opacity-40">{separator}</span>
+      </span>
+    ))}
+  </div>
+</div>

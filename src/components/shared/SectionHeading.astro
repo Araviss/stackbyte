@@ -1,0 +1,49 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  highlight?: string;
+  description?: string;
+  align?: "left" | "center";
+  /** Color of the highlight text. Defaults to brand-red. */
+  highlightColor?: "red" | "yellow" | "blue";
+}
+
+const {
+  label,
+  title,
+  highlight,
+  description,
+  align = "left",
+  highlightColor = "red",
+} = Astro.props;
+
+const alignClass = align === "center" ? "text-center items-center" : "text-left items-start";
+
+const highlightColorClass = {
+  red: "text-brand-red",
+  yellow: "text-brand-yellow",
+  blue: "text-brand-blue",
+}[highlightColor];
+---
+
+<div class={`flex flex-col gap-4 ${alignClass}`}>
+  {label && (
+    <span class="font-mono text-sm font-bold uppercase tracking-widest text-brand-blue">
+      {label}
+    </span>
+  )}
+  <h2 class="text-display-sm">
+    {title}
+    {highlight && (
+      <span class={highlightColor === "yellow" ? highlightColorClass : `${highlightColorClass}`}>
+        {" "}{highlight}
+      </span>
+    )}
+  </h2>
+  {description && (
+    <p class="text-lg text-brand-black/60 max-w-2xl leading-relaxed mt-2">
+      {description}
+    </p>
+  )}
+</div>

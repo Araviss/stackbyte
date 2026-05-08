@@ -1,0 +1,36 @@
+---
+import { NAV_LINKS, SITE_NAME, SITE_TAGLINE } from "../../content/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="section-rule px-6 py-14">
+  <div class="max-w-6xl mx-auto flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+    <div>
+      <a href="/" class="inline-flex items-center gap-3" aria-label={`${SITE_NAME} home`}>
+        <img src="/images/logo.svg" alt={`${SITE_NAME} logo`} class="h-12 w-auto" />
+        <span class="flex flex-col justify-center leading-none">
+          <span class="text-xl font-semibold lowercase">{SITE_NAME}</span>
+          <span class="mt-2 font-hand text-2xl leading-none text-brand-black/55">
+            {SITE_TAGLINE}
+          </span>
+        </span>
+      </a>
+    </div>
+
+    <nav class="flex flex-wrap gap-x-8 gap-y-3" aria-label="Footer navigation">
+      {NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          class="font-medium text-brand-black/60 hover:text-brand-red transition-colors duration-200"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <p class="text-sm text-brand-black/45">
+      &copy; {year} {SITE_NAME}. No mystery retainers.
+    </p>
+  </div>
+</footer>

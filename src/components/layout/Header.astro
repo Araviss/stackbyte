@@ -1,0 +1,41 @@
+---
+import { NAV_LINKS, SITE_NAME } from "../../content/site";
+import MobileNav from "./MobileNav";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="relative z-50 bg-brand-white/95 backdrop-blur-sm">
+  <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3" aria-label={`${SITE_NAME} home`}>
+      <img src="/images/logo.svg" alt={`${SITE_NAME} logo`} class="h-9 w-auto" />
+      <span class="text-xl font-semibold tracking-normal lowercase">{SITE_NAME}</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-10" aria-label="Main navigation">
+      {NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          class={`text-base font-medium transition-colors duration-200 hover:text-brand-red ${
+            currentPath === link.href
+              ? "text-brand-black"
+              : "text-brand-black/75"
+          }`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <a
+      href="/contact"
+      class="hidden md:inline-flex items-center border border-brand-black/20 px-5 py-2.5 text-sm font-bold hover:border-brand-red hover:text-brand-red transition-colors duration-200"
+    >
+      Get in touch
+    </a>
+
+    <MobileNav links={NAV_LINKS} client:load />
+  </div>
+</header>
+
+
+

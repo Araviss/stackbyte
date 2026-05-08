@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSection from "../components/home/HeroSection.astro";
+import ServicesOverview from "../components/home/ServicesOverview.astro";
+import CTABanner from "../components/shared/CTABanner.astro";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Stackbyte",
+  "url": "https://stackbyte.io",
+  "description": "Software consulting for small and mid-size businesses. Website design and development, custom software, cloud infrastructure, DevOps, and modernization — without the enterprise overhead.",
+  "founder": {
+    "@type": "Person",
+    "name": "Jzon Livingston"
+  },
+  "areaServed": "US",
+  "serviceType": [
+    "Website Design and Development",
+    "Custom Software Development",
+    "Website Design and Development",
+    "Legacy Modernization",
+    "Cloud Infrastructure",
+    "DevOps and Platform Engineering"
+  ],
+  "knowsAbout": [
+    "React",
+    "Node.js",
+    "TypeScript",
+    "AWS",
+    "GCP",
+    "Azure",
+    "Terraform",
+    "Docker",
+    "Kubernetes",
+    "PostgreSQL"
+  ]
+};
+---
+
+<BaseLayout
+  title="Software Consulting for Small & Mid-Size Businesses | Stackbyte"
+  description="Stackbyte helps small and mid-size teams build websites, ship custom software, and scale their infrastructure — without the enterprise price tag or the enterprise nonsense."
+  schema={schema}
+>
+  <HeroSection />
+  <ServicesOverview />
+  <CTABanner
+    title="Got a process held together by vibes?"
+    description="Bring us the weird spreadsheet, the duct-taped workflow, or the app nobody wants to touch. We'll be normal about it."
+    primaryLabel="Let's talk"
+    primaryHref="/contact"
+    secondaryLabel="See services"
+    secondaryHref="/consulting"
+  />
+</BaseLayout>

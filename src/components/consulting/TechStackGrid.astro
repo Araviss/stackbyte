@@ -1,0 +1,26 @@
+---
+import type { TechCategory } from "../../types";
+
+interface Props {
+  categories: TechCategory[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+  {categories.map((category) => (
+    <div class="flex flex-col gap-4">
+      <h4 class="font-mono font-bold text-xs uppercase tracking-widest text-brand-black/40">
+        {category.label}
+      </h4>
+      <ul class="flex flex-col gap-3">
+        {category.items.map((item) => (
+          <li class="font-bold text-sm text-brand-black/70">
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

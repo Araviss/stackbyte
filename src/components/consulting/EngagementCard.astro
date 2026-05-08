@@ -1,0 +1,31 @@
+---
+import type { EngagementModel } from "../../types";
+
+interface Props {
+  model: EngagementModel;
+  index: number;
+}
+
+const { model, index } = Astro.props;
+const accents = ["bg-brand-yellow", "bg-brand-blue", "bg-brand-red"];
+const accent = accents[index % accents.length];
+const textColors = ["text-brand-black", "text-brand-white", "text-brand-white"];
+const textColor = textColors[index % textColors.length];
+---
+
+<div class="flex flex-col overflow-hidden hover:scale-[1.01] transition-transform duration-300">
+  <!-- Color header — no border, just the block -->
+  <div class={`${accent} ${textColor} px-8 py-7`}>
+    <p class="font-mono text-xs uppercase tracking-widest opacity-60 mb-3">0{index + 1}</p>
+    <h3 class="font-black text-2xl">{model.title}</h3>
+    <p class="font-medium italic mt-1 opacity-80">{model.tagline}</p>
+  </div>
+  <!-- Body — subtle background, no border -->
+  <div class="px-8 py-7 bg-brand-black/5 flex flex-col gap-4 flex-1">
+    <p class="text-brand-black/70 leading-relaxed">{model.description}</p>
+    <div class="mt-auto pt-5">
+      <p class="font-mono text-xs uppercase tracking-widest text-brand-black/30 mb-1">Best for</p>
+      <p class="font-bold text-sm text-brand-black/70">{model.bestFor}</p>
+    </div>
+  </div>
+</div>

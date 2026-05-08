@@ -1,0 +1,23 @@
+---
+import { TECH_LOGOS } from "../../content/home";
+---
+
+<div class="border-y-2 border-brand-black bg-brand-black overflow-hidden py-4">
+  <div class="flex gap-12 items-center animate-[scroll_20s_linear_infinite] whitespace-nowrap">
+    {[...TECH_LOGOS, ...TECH_LOGOS].map((name, i) => (
+      <span
+        key={i}
+        class="font-mono font-bold text-brand-white/50 text-sm uppercase tracking-widest shrink-0"
+      >
+        {name}
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>

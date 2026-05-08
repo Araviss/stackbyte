@@ -1,0 +1,17 @@
+---
+import type { Value } from "../../types";
+
+interface Props {
+  value: Value;
+  index: number;
+}
+
+const { value, index } = Astro.props;
+---
+
+<!-- No border — numbers and spacing carry the structure -->
+<div class="flex flex-col gap-4 py-10 md:px-10">
+  <span class="font-mono font-black text-4xl text-brand-black/20 leading-none">0{index + 1}</span>
+  <h3 class="font-black text-xl text-brand-black">{value.title}</h3>
+  <p class="text-brand-black/60 leading-relaxed">{value.description}</p>
+</div>

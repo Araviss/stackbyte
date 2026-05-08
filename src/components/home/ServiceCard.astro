@@ -1,0 +1,34 @@
+---
+import type { Service } from "../../types";
+
+interface Props {
+  service: Service;
+  index: number;
+}
+
+const { service, index } = Astro.props;
+
+// Alternate accent colors across cards for a bold, playful feel
+const accentColors = ["bg-brand-yellow", "bg-brand-blue", "bg-brand-red", "bg-brand-black"];
+const accent = accentColors[index % accentColors.length];
+const textColor = index === 3 ? "text-brand-white" : "text-brand-black";
+---
+
+<a
+  href={`/consulting#${service.id}`}
+  class="group flex flex-col gap-4 p-8 border-2 border-brand-black hover:shadow-[6px_6px_0px_0px_#000] transition-shadow duration-200 bg-brand-white"
+>
+  <div class={`w-10 h-10 ${accent} border-2 border-brand-black flex items-center justify-center`}>
+    <span class={`font-mono font-black text-sm ${textColor}`}>0{index + 1}</span>
+  </div>
+
+  <h3 class="font-black text-2xl group-hover:text-brand-red transition-colors duration-200">
+    {service.title}
+  </h3>
+
+  <p class="text-brand-black/70 leading-relaxed">{service.summary}</p>
+
+  <span class="font-bold text-sm mt-auto flex items-center gap-2 group-hover:gap-3 transition-all duration-200">
+    Learn more <span aria-hidden="true">→</span>
+  </span>
+</a>

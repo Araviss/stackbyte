@@ -1,0 +1,40 @@
+---
+interface Props {
+  label?: string;
+  title: string;
+  highlight?: string;
+  description?: string;
+}
+
+const { label, title, highlight, description } = Astro.props;
+---
+
+<section class="bg-brand-black text-brand-white pt-36 pb-24 px-6 md:px-12 relative overflow-hidden">
+
+  <!-- Watermark -->
+  <span
+    class="absolute right-0 bottom-0 font-black text-[18vw] leading-none text-brand-white/[0.03] select-none pointer-events-none whitespace-nowrap"
+    aria-hidden="true"
+  >
+    {title.split(" ")[0].toUpperCase()}
+  </span>
+
+  <div class="relative max-w-7xl mx-auto flex flex-col gap-6">
+    {label && (
+      <span class="font-mono text-sm font-bold uppercase tracking-widest text-brand-yellow">
+        {label}
+      </span>
+    )}
+    <h1 class="text-display text-brand-white">
+      {title}
+      {highlight && (
+        <span class="text-brand-yellow"> {highlight}</span>
+      )}
+    </h1>
+    {description && (
+      <p class="text-brand-white/50 text-xl leading-relaxed max-w-2xl mt-2">
+        {description}
+      </p>
+    )}
+  </div>
+</section>

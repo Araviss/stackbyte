@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTABanner from "../components/shared/CTABanner.astro";
+import { ENGAGEMENT_MODELS, PROCESS_STEPS } from "../content/consulting";
+
+const accents = ["text-brand-blue", "text-brand-red", "text-emerald-600", "text-brand-yellow"];
+const symptomAccents = ["bg-brand-blue", "bg-brand-red", "bg-emerald-600", "bg-brand-yellow"];
+---
+
+<BaseLayout
+  title="Consulting"
+  description="Stackbyte consulting services: website development, custom software, cloud infrastructure, DevOps, and modernization for small and mid-size businesses."
+>
+  <section class="px-6 py-16 md:py-24">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-4xl text-center">
+        <h1 class="mt-5 text-[clamp(3.25rem,7vw,7rem)] font-black leading-[0.9] tracking-normal">
+          Untangle the system without rebuilding the company.
+        </h1>
+        <p class="mx-auto mt-7 max-w-2xl text-xl leading-relaxed text-brand-black/65">
+          Modernization, custom software, cloud work, and platform cleanup for
+          teams that need senior engineering without the slow dance of enterprise
+          consulting.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-5xl border-y border-brand-black/10 py-8">
+        <p class="text-center font-hand text-3xl text-brand-black/55">
+          if this sounds familiar
+        </p>
+        {[
+          "The spreadsheet became infrastructure.",
+          "Only one person knows deploy day.",
+          "The old app is important and grumpy.",
+          "The process works, but only with folklore.",
+        ].map((symptom, index) => (
+          <div class="mt-5 flex items-center gap-4 border-t border-brand-black/10 pt-5 first:border-t-0 first:pt-0 md:mx-auto md:max-w-3xl">
+            <span class={`h-3 w-3 shrink-0 rounded-full ${symptomAccents[index]}`} aria-hidden="true"></span>
+            <p class="text-xl font-black leading-snug text-brand-black/80">{symptom}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-rule px-6 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <p class="font-hand text-3xl text-brand-black/55">how to hire us</p>
+        <h2 class="mt-3 text-display-sm">Work formats.</h2>
+        <p class="mt-5 max-w-sm text-lg leading-relaxed text-brand-black/60">
+          Different problems need different shapes. We keep the scope clear,
+          the handoff clean, and the work tied to a real outcome.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        {ENGAGEMENT_MODELS.map((model) => (
+          <article class="border-t border-brand-black/10 pt-6">
+            <h3 class="text-2xl font-black">{model.title}</h3>
+            <p class="mt-1 font-hand text-2xl text-brand-red">{model.tagline}</p>
+            <p class="mt-4 leading-relaxed text-brand-black/60">{model.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-rule px-6 py-20 md:py-28">
+    <div class="max-w-6xl mx-auto grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <p class="font-hand text-3xl text-brand-black/55">the process</p>
+        <h2 class="mt-3 text-display-sm">How it goes.</h2>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2">
+        {PROCESS_STEPS.map((step) => (
+          <article class="grid grid-cols-[3rem_1fr] gap-5 border-t border-brand-black/10 pt-6">
+            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-brand-yellow/30 font-hand text-3xl leading-none text-brand-black/70">
+              {step.number}
+            </span>
+            <div>
+              <h3 class="text-2xl font-black">{step.title}</h3>
+              <p class="mt-3 leading-relaxed text-brand-black/60">{step.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    title="Ready to make the weird thing less weird?"
+    description="Tell us what you are dealing with. We will tell you what is worth fixing first."
+    primaryLabel="Let's talk"
+    primaryHref="/contact"
+    secondaryLabel="Meet Stackbyte"
+    secondaryHref="/about"
+  />
+</BaseLayout>

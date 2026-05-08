@@ -1,0 +1,24 @@
+---
+import { buttonVariants } from "../../lib/styles";
+import type { ButtonVariant } from "../../lib/styles";
+
+interface Props {
+  href?: string;
+  variant?: ButtonVariant;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+}
+
+const { href, variant = "primary", type = "button", class: className = "" } = Astro.props;
+const classes = `${buttonVariants[variant]} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes}>
+    <slot />
+  </button>
+)}

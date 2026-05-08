@@ -9,19 +9,19 @@ export const METRICS: Metric[] = [
 
 export const DIFFERENTIATORS = [
   {
-    title: "We've done this at scale.",
+    title: "We've done this at scale",
     description:
       "Enterprise distributed systems. Large-scale cloud migrations. We didn't learn this on your project — we brought it to your project.",
     icon: "Target",
   },
   {
-    title: "We talk like humans.",
+    title: "We talk like humans",
     description:
       "No jargon, no mystery retainers, no 40-page proposal for a 2-week job. You'll always know what we're doing, why we're doing it, and what it costs.",
     icon: "MessageSquare",
   },
   {
-    title: "We care what happens after launch.",
+    title: "We care what happens after launch",
     description:
       "We don't hand you a zip file and disappear. Clean code, solid tests, documentation your team can read. You're set up to succeed with or without us.",
     icon: "Shield",

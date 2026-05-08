@@ -44,8 +44,8 @@ export default function ContactForm() {
         <h3 className="font-black text-2xl">Got it. We'll be in touch.</h3>
         <p className="text-brand-black/70 leading-relaxed">
           Expect a response within one business day. If it's urgent, email us directly at{" "}
-          <a href="mailto:hello@stackbyte.io" className="font-bold underline">
-            hello@stackbyte.io
+          <a href="mailto:info@stackbyte.co" className="font-bold underline">
+            info@stackbyte.co
           </a>
           .
         </p>
@@ -137,7 +137,7 @@ export default function ContactForm() {
 
       {formState === "error" && (
         <p className="text-brand-red font-bold text-sm" role="alert">
-          Something went wrong. Please try again or email us directly at hello@stackbyte.io.
+          Something went wrong. Please try again or email us directly at info@stackbyte.co.
         </p>
       )}
 
@@ -179,3 +179,4 @@ function Field({ label, error, required, children }: FieldProps) {
     </div>
   );
 }
+

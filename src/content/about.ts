@@ -12,25 +12,25 @@ export const STORY = {
 
 export const VALUES: Value[] = [
   {
-    title: "Straight talk, always.",
+    title: "Straight talk, always",
     description:
       "If something is going to be a problem, you hear it from us first. Early uncomfortable conversations beat late expensive ones.",
     icon: "MessageSquare",
   },
   {
-    title: "Craft over shortcuts.",
+    title: "Craft over shortcuts",
     description:
       "We write code we would be comfortable maintaining later. Tests, documentation, clean architecture - not for show, but because shortcuts compound.",
     icon: "Hammer",
   },
   {
-    title: "Outcomes, not outputs.",
+    title: "Outcomes, not outputs",
     description:
       "Features are not the point. The point is your business running better than it did before we showed up.",
     icon: "TrendingUp",
   },
   {
-    title: "We stay curious.",
+    title: "We stay curious",
     description:
       "The stack moves fast. We keep up because clients benefit from it, and because being bored is a terrible way to build software.",
     icon: "BookOpen",

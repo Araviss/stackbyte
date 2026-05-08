@@ -27,25 +27,25 @@ export const ENGAGEMENT_MODELS: EngagementModel[] = [
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     number: "1",
-    title: "We listen first.",
+    title: "We listen first",
     description:
       "Tell us what is broken, slow, confusing, or half-built. Good questions here save everyone time later.",
   },
   {
     number: "2",
-    title: "We make a plan.",
+    title: "We make a plan",
     description:
       "Architecture, timeline, cost, risks - all visible before the build starts. If something does not add up, we say so.",
   },
   {
     number: "3",
-    title: "We build it.",
+    title: "We build it",
     description:
       "Iterative, transparent, and boring in the best possible way. You see progress, tradeoffs, and decisions as they happen.",
   },
   {
     number: "4",
-    title: "We hand it off clean.",
+    title: "We hand it off clean",
     description:
       "Documentation, knowledge transfer, and a sane landing. Launch should not feel like being pushed out of a moving vehicle.",
   },

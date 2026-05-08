@@ -75,8 +75,8 @@ describe("createResendSender", () => {
 
     await expect(
       sender.send({
-        from: "noreply@stackbyte.io",
-        to: "hello@stackbyte.io",
+        from: "noreply@stackbyte.co",
+        to: "info@stackbyte.co",
         replyTo: "alex@example.com",
         subject: "Test",
         html: "<p>Test</p>",
@@ -95,8 +95,8 @@ describe("createResendSender", () => {
 
     await expect(
       sender.send({
-        from: "noreply@stackbyte.io",
-        to: "hello@stackbyte.io",
+        from: "noreply@stackbyte.co",
+        to: "info@stackbyte.co",
         replyTo: "alex@example.com",
         subject: "Test",
         html: "<p>Test</p>",
@@ -112,13 +112,13 @@ describe("sendContactEmail", () => {
     const mockSender: EmailSender = { send: vi.fn().mockResolvedValue(undefined) };
 
     // Provide the required env var for the test
-    vi.stubEnv("CONTACT_EMAIL", "hello@stackbyte.io");
+    vi.stubEnv("CONTACT_EMAIL", "info@stackbyte.co");
 
     await sendContactEmail(validData, mockSender);
 
     expect(mockSender.send).toHaveBeenCalledOnce();
     const call = vi.mocked(mockSender.send).mock.calls[0][0];
-    expect(call.to).toBe("hello@stackbyte.io");
+    expect(call.to).toBe("info@stackbyte.co");
     expect(call.replyTo).toBe(validData.email);
     expect(call.subject).toContain(validData.name);
     expect(call.html).toBeTruthy();
@@ -141,10 +141,11 @@ describe("sendContactEmail", () => {
     const mockSender: EmailSender = {
       send: vi.fn().mockRejectedValue(new Error("SMTP timeout")),
     };
-    vi.stubEnv("CONTACT_EMAIL", "hello@stackbyte.io");
+    vi.stubEnv("CONTACT_EMAIL", "info@stackbyte.co");
 
     await expect(sendContactEmail(validData, mockSender)).rejects.toThrow("SMTP timeout");
 
     vi.unstubAllEnvs();
   });
 });
+

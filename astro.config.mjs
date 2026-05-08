@@ -3,14 +3,14 @@ import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://stackbyte.io',
-  // Static output with server-rendered API routes via the Node adapter
-  adapter: node({ mode: "standalone" }),
+  site: 'https://stackbyte.co',
+  output: 'server',
+  adapter: vercel(),
   integrations: [react(), sitemap()],
 
   vite: {

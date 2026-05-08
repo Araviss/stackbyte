@@ -46,7 +46,7 @@ export async function sendContactEmail(
   }
 
   await sender.send({
-    from: "noreply@stackbyte.io",
+    from: "noreply@stackbyte.co",
     to: toAddress,
     replyTo: data.email,
     subject: `New inquiry from ${data.name}`,
@@ -84,3 +84,4 @@ export function createResendSender(): EmailSender {
     },
   };
 }
+

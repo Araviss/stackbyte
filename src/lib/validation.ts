@@ -15,7 +15,6 @@ export const contactFormSchema = z.object({
     .max(100, "Company name must be under 100 characters")
     .optional(),
   service: z.string().min(1, "Please select a service"),
-  budget: z.string().min(1, "Please select a budget range"),
   message: z
     .string()
     .min(10, "Message must be at least 10 characters")

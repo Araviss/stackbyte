@@ -9,14 +9,6 @@ export const SERVICE_OPTIONS = [
   { value: "not-sure", label: "Not sure yet - let's figure it out" },
 ] as const;
 
-export const BUDGET_OPTIONS = [
-  { value: "under-10k", label: "Under $10k" },
-  { value: "10k-50k", label: "$10k - $50k" },
-  { value: "50k-100k", label: "$50k - $100k" },
-  { value: "over-100k", label: "$100k+" },
-  { value: "not-sure", label: "Honestly not sure yet" },
-] as const;
-
 export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "What do you actually build?",
@@ -31,7 +23,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "How do you handle pricing?",
     answer:
-      "Project-based work is scoped and priced before we start. Staff augmentation and advisory retainers are billed monthly. No surprise invoices.",
+      "Project-based work is scoped and priced before we start. Advisory work is billed monthly when ongoing technical guidance makes more sense. No surprise invoices.",
   },
   {
     question: "Do you work with non-technical founders?",
@@ -41,7 +33,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "We already have a dev team. Can you still help?",
     answer:
-      "Absolutely. We can augment capacity, provide senior perspective, or own specific workstreams while your team focuses elsewhere.",
+      "Absolutely. We can provide senior perspective, review architecture, or own specific workstreams while your team focuses elsewhere.",
   },
   {
     question: "What if the project scope changes mid-way?",

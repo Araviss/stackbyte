@@ -7,7 +7,6 @@ const validData = {
   email: "alex@example.com",
   company: "Acme Co",
   service: "software-development",
-  budget: "10k-50k",
   message: "We need help building a customer portal.",
 };
 
@@ -51,10 +50,6 @@ describe("validateContactForm", () => {
 
   it("rejects when service is empty", () => {
     expect(() => validateContactForm({ ...validData, service: "" })).toThrow(ZodError);
-  });
-
-  it("rejects when budget is empty", () => {
-    expect(() => validateContactForm({ ...validData, budget: "" })).toThrow(ZodError);
   });
 
   it("rejects a filled honeypot field", () => {

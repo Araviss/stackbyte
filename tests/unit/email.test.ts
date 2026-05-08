@@ -18,7 +18,6 @@ const validData: ContactFormData = {
   email: "alex@example.com",
   company: "Acme Co",
   service: "software-development",
-  budget: "10k-50k",
   message: "We need help building a customer portal.",
 };
 

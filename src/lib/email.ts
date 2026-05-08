@@ -24,7 +24,6 @@ export function buildContactEmailHtml(data: ContactFormData): string {
     <p><strong>Email:</strong> ${data.email}</p>
     ${company}
     <p><strong>Service Interest:</strong> ${data.service}</p>
-    <p><strong>Budget:</strong> ${data.budget}</p>
     <hr />
     <p><strong>Message:</strong></p>
     <p>${data.message.replace(/\n/g, "<br />")}</p>

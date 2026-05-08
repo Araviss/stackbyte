@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema } from "../../lib/validation";
 import type { ContactFormData } from "../../types";
-import { SERVICE_OPTIONS, BUDGET_OPTIONS } from "../../content/contact";
+import { SERVICE_OPTIONS } from "../../content/contact";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -102,29 +102,16 @@ export default function ContactForm() {
         />
       </Field>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Field label="Service interest" error={errors.service?.message} required>
-          <select className={inputClass(!!errors.service)} {...register("service")}>
-            <option value="">Select a service...</option>
-            {SERVICE_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-
-        <Field label="Budget range" error={errors.budget?.message} required>
-          <select className={inputClass(!!errors.budget)} {...register("budget")}>
-            <option value="">Select a range...</option>
-            {BUDGET_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </Field>
-      </div>
+      <Field label="Service interest" error={errors.service?.message} required>
+        <select className={inputClass(!!errors.service)} {...register("service")}>
+          <option value="">Select a service...</option>
+          {SERVICE_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      </Field>
 
       <Field label="Message" error={errors.message?.message} required>
         <textarea

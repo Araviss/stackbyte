@@ -55,7 +55,6 @@ export async function sendContactEmail(
 
 /**
  * Creates a Resend-backed EmailSender.
- * Separated from sendContactEmail so the transport is swappable.
  */
 export function createResendSender(): EmailSender {
   const apiKey = import.meta.env.RESEND_API_KEY;
@@ -72,13 +71,13 @@ export function createResendSender(): EmailSender {
       const { error } = await resend.emails.send({
         from: payload.from,
         to: payload.to,
-        reply_to: payload.replyTo,
+        replyTo: payload.replyTo,
         subject: payload.subject,
         html: payload.html,
       });
 
       if (error) {
-        throw new Error(`Failed to send email: ${error.message}`);
+        throw new Error(`Resend error: ${error.message}`);
       }
     },
   };

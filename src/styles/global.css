@@ -38,16 +38,16 @@
 @layer utilities {
   .text-display {
     font-size: clamp(4.5rem, 10vw, 9rem);
-    line-height: 0.9;
+    line-height: 0.98;
     font-weight: 900;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
   }
 
   .text-display-sm {
     font-size: clamp(2.5rem, 5vw, 4.75rem);
-    line-height: 0.95;
+    line-height: 1.04;
     font-weight: 900;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
   }
 
   .font-hand {
@@ -59,8 +59,7 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .reveal-ready main > section,
-    .reveal-ready footer {
+    .reveal-ready main > section {
       opacity: 0;
       transform: translateY(28px);
       transition:
@@ -69,8 +68,7 @@
       will-change: opacity, transform;
     }
 
-    .reveal-ready main > section.is-visible,
-    .reveal-ready footer.is-visible {
+    .reveal-ready main > section.is-visible {
       opacity: 1;
       transform: translateY(0);
     }

@@ -74,7 +74,7 @@ const pageTitle = `${title} | ${SITE_NAME}`;
 
         document.documentElement.classList.add("reveal-ready");
 
-        const revealItems = document.querySelectorAll("main > section, footer");
+        const revealItems = document.querySelectorAll("main > section");
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -98,5 +98,4 @@ const pageTitle = `${title} | ${SITE_NAME}`;
     </script>
   </body>
 </html>
-
 

@@ -12,15 +12,47 @@ function validateContactForm(data) {
   return contactFormSchema.parse(data);
 }
 
+function buildContactEmailHtml(data) {
+  const company = data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : "";
+  return `
+    <h2>New Contact Form Submission</h2>
+    <p><strong>Name:</strong> ${data.name}</p>
+    <p><strong>Email:</strong> ${data.email}</p>
+    ${company}
+    <p><strong>Service Interest:</strong> ${data.service}</p>
+    <hr />
+    <p><strong>Message:</strong></p>
+    <p>${data.message.replace(/\n/g, "<br />")}</p>
+  `.trim();
+}
 async function sendContactEmail(data, sender) {
-  {
-    throw new Error("CONTACT_EMAIL environment variable is not set");
-  }
+  const toAddress = "info@stackbyte.co";
+  await sender.send({
+    from: "noreply@stackbyte.co",
+    to: toAddress,
+    replyTo: data.email,
+    subject: `New inquiry from ${data.name}`,
+    html: buildContactEmailHtml(data)
+  });
 }
 function createResendSender() {
-  {
-    throw new Error("RESEND_API_KEY environment variable is not set");
-  }
+  const apiKey = "re_ugASpPMp_yShiCDTxkqUmGaL8Au2SSHHZ";
+  return {
+    async send(payload) {
+      const { Resend } = await import('resend');
+      const resend = new Resend(apiKey);
+      const { error } = await resend.emails.send({
+        from: payload.from,
+        to: payload.to,
+        replyTo: payload.replyTo,
+        subject: payload.subject,
+        html: payload.html
+      });
+      if (error) {
+        throw new Error(`Resend error: ${error.message}`);
+      }
+    }
+  };
 }
 
 const prerender = false;
